@@ -2,6 +2,7 @@
 
 
 #include "PlayerCharacter.h"
+#include "Engine.h"
 #include <Kismet/KismetMathLibrary.h>
 
 
@@ -19,7 +20,11 @@ void APlayerCharacter::BeginPlay()
 	//in the start of a game....
 }
 
-
+void APlayer_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	PlayerInputComponent->BindAction("LeftMouseButton", IE_Pressed, this , &APlayerCharacter::Shoot)
+}
 
 void APlayerCharacter::Tick(float DeltaTime)
 {
