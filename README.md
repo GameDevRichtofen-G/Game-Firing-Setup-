@@ -241,13 +241,13 @@ the code below is example of how we can do it :
 void APlayerCharacter::Shoot()
 {
   /*NOTE : make sure to have a variables called last time and current fire rate in your header class*/
-  if(!Firing) /->return if we weren't firing 
+  if(!Firing) //->return if we weren't firing 
     return;
-  float CurrentTime = GetWorld()->GetTimeSeconds(); /#->get current time second
-  float DeltaShot = CurrentTime - LastTime; /#->getting the deltaTshot or in other word the time that has passed since the last shot 
-  if (DeltaShot > 0) /#-> getting the current fire rate(fire rate is actually the amount time the player press left mouse button) and we use condition so that we make sure we won't divide by zero
+  float CurrentTime = GetWorld()->GetTimeSeconds(); //#->get current time second
+  float DeltaShot = CurrentTime - LastTime; //#->getting the deltaTshot or in other word the time that has passed since the last shot 
+  if (DeltaShot > 0) //#-> getting the current fire rate(fire rate is actually the amount time the player press left mouse button) and we use condition so that we make sure we won't divide by zero
     CurrentFirerate = 1/DeltaShot;
-  /#-> set our current time as last time 
+  //#-> set our current time as last time 
   LastTime = CurrentTime;
   /*Here we calculate the speed of our firing, by divindg it with the maximum number of fire per sec, in my case it was 6.
    the reason I multipy with 4 is that I want my maximum speed be 4, so that if player was pressing mouse 6 times per
