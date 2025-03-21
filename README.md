@@ -18,6 +18,9 @@ Now that we know what we need we can actually make our firing system.
 first include these codes so that we have a simple engine that we can work with in a python : 
 
 ```python
+import time
+
+
 previous_frame_60 = time.time()
 
 
