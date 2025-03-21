@@ -22,10 +22,10 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 
-protected :
+protected:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Variables")
 		float ShootSpeed;
-private :
+private:
 	float LastTime;
 	float CurrentFirerate;
 
