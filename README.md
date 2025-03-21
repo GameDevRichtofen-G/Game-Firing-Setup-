@@ -101,4 +101,4 @@ Test_gun = Gun(0,"︻╦デ╤━╾")
 ```
 for sake of this I will use this text as a gun model "︻╦デ╤━╾".
 after this you should have something like this : 
-
+![Description](https://github.com/GameDevRichtofen-G/Game-Firing-Setup-/blob/main/Example_gun_1.gif)
