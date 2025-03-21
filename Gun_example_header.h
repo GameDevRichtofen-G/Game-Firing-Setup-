@@ -25,9 +25,16 @@ public:
 protected:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Variables")
 		float ShootSpeed;
+        UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Variables")
+		bool Firing;
 private:
 	float LastTime;
 	float CurrentFirerate;
+
+	void GunShoot();
+        void FireRateTimer();
+        void Shoot();
+
 
 };
 
