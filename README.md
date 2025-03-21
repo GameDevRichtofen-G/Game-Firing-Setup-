@@ -35,7 +35,7 @@ while True:
         previous_frame_60 = current_time
        
     os.system("cls" if os.name == "nt" else "clear") 
-    Scene = ['-'] * 10
+    Scene = [' '] * 10
     print("".join(Scene))
     time.sleep(0.005)
 ```
