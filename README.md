@@ -131,3 +131,6 @@ you can see we have function called `self.input` we need to make this function l
             else:#->if we released it then do something else
                 """"""
 ```
+
+
+Now we have everything ready to make our firing system
