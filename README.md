@@ -19,7 +19,7 @@ first include these codes so that we have a simple engine that we can work with 
 
 ```python
 import time
-
+import os
 
 previous_frame_60 = time.time()
 
