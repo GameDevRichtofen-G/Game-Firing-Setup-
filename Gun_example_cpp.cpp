@@ -25,7 +25,7 @@ void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	//whatever after this...
-
+	FireRateTimer()
 }
 
 
@@ -57,15 +57,15 @@ void APlayerCharacter::Shoot()
 
 void APlayerCharacter::FireRateTimer()
 {
-	if(Firing)
-	{	
-		if(Time <= 0)
-		{
-			Firing = false;
-			return
-		}
-		Time -= GetWorld()->GetWorldDeltaSecond();
+	if(!Firing)
+    	   return
+	if(Time <= 0)
+	{
+		Firing = false;
+		return
 	}
+	Time -= GetWorld()->GetWorldDeltaSecond();
+
 }
 
 
