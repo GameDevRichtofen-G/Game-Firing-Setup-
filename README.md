@@ -79,7 +79,7 @@ to render our stuff we will use this code right after making the scene :
     Scene = [' '] * 100
 
     for instance_class in Main_class.Instances:#-> go through all the instances of main class and renders them base on their x position
-       Scene[instance_class.x] = instance_class.shape 
+       Scene[int(instance_class.x)] = instance_class.shape 
     
     print("".join(Scene))
 ```
