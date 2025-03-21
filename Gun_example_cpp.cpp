@@ -29,7 +29,7 @@ void APlayerCharacter::Tick(float DeltaTime)
 }
 
 
-void APlayerCharacter::Calculate_rotation_speed(float deltaTime)
+void APlayerCharacter::GunShot()
 {
 
   if(!Firing) 
@@ -45,7 +45,28 @@ void APlayerCharacter::Calculate_rotation_speed(float deltaTime)
   ShootSpeed = FMath::Clamp((CurrentFirerate/6)*4, 2, 4);  
 
 }
+//call shoot function using a bind action method that has left mouse button
+void APlayerCharacter::Shoot()
+{
+    if(Firing)
+    	return
+    Firing = true;
+    Time = 60/600;
+    GunShoot()
+}
 
+void APlayerCharacter::FireRateTimer()
+{
+	if(Firing)
+	{	
+		if(Time <= 0)
+		{
+			Firing = false;
+			return
+		}
+		Time -= GetWorld()->GetWorldDeltaSecond();
+	}
+}
 
 
 
