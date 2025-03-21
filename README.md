@@ -35,8 +35,8 @@ while True:
         previous_frame_60 = current_time
        
     os.system("cls" if os.name == "nt" else "clear") 
-    Scene = [' '] * 10
-    print("".join(Scene))
+    Scene = [' '] * 10 #->making our scene
+    print("".join(Scene)) #->Reneder our scene
     time.sleep(0.005)
 ```
 We use to  have a simple scene and deltaTime. made this code in our previous repo with full explanation.
@@ -72,6 +72,17 @@ if current_time - previous_frame_60 >= FRAME_TIME_60:
         for instance_class in Main_class.Instances:#->go through all the instances and update them each frame
             instance_class.Update(deltaTime_60,True)
 ```
+
+### Rendering :
+to render our stuff we will use this code right after making the scene :
+```python
+    Scene = [' '] * 100
+
+    for instance_class in Main_class.Instances:#-> go through all the instances of main class and renders them base on their x position
+       Scene[instance_class.x] = instance_class.shape 
+    
+    print("".join(Scene))
+```
 Now we have a basic entity system that we can work with.
 ### Make a gun class :
 to make a gun classs, we want to make sure it is an instance of a main class like this :
@@ -88,5 +99,6 @@ Now we can create our gun class, before our while loop like this :
 ```python
 Test_gun = Gun(0,"︻╦デ╤━╾")
 ```
-for sake of this I will use this text as a gun model "︻╦デ╤━╾"
+for sake of this I will use this text as a gun model "︻╦デ╤━╾".
+after this you should have something like this : 
 
