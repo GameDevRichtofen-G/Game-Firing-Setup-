@@ -199,4 +199,25 @@ then in update function do this :
         else :
             self.shape = "︻╦デ╤━╾"
 ```
+now to make our gun fire bullet we can make class called bullet :
+``` python
+class bullet(Main_class):
+    def __init__(self, x, shape):
+        super().__init__(x, shape)
+    
+    def Update(self, DeltaTime, Use_delta_Time):
+        super().Update(DeltaTime, Use_delta_Time)
+        self.x = (self.x + (50 * DeltaTime if Use_delta_Time else 1)) #-> update the bullet x position using deltaTime
+        if self.x > 99 : #-> if x was greater than 99 then we destroy our bullet
+            Main_class.Instances.remove(self)
+```
 
+now to make our bullet we do this in our update function :
+```python
+        if self.LeftMB and not self.firing :
+            self.firing = True
+            self.time = 60 / 800
+            new_bullet = bullet(self.x + 1 , '-') #->create a new class called bullet one x position ahead of the gun
+            self.shape = "︻╦デ╤━╾o"
+
+```
