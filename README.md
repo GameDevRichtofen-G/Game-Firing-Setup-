@@ -72,7 +72,7 @@ if current_time - previous_frame_60 >= FRAME_TIME_60:
         for instance_class in Main_class.Instances:#->go through all the instances and update them each frame
             instance_class.Update(deltaTime_60,True)
 ```
-
+Now we have a basic entity system that we can work with.
 ### Make a gun class :
 to make a gun classs, we want to make sure it is an instance of a main class like this :
 ```python
@@ -85,5 +85,8 @@ class Gun(Main_class):
 ```
 
 Now we can create our gun class, before our while loop like this :
-
+```python
+Test_gun = Gun(0,"︻╦デ╤━╾")
+```
+for sake of this I will use this text as a gun model "︻╦デ╤━╾"
 
