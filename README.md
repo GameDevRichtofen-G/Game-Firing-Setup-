@@ -221,3 +221,6 @@ now to make our bullet we do this in our update function :
             self.shape = "︻╦デ╤━╾o"
 
 ```
+
+Final Result would be this(gif is on 25 frame per sec so sorry about lag):
+![Description](https://github.com/GameDevRichtofen-G/Game-Firing-Setup-/blob/main/Example_gun_2.gif)
