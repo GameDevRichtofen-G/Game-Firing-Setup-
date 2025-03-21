@@ -158,11 +158,45 @@ then in our input function if we pressed left mouse button then we make LeftMB t
                self.LeftMB = False
 ```
 
-Now in our update function we will say if were holding left mouse button and firing was not true we are shooting :
+Now in our update function we will say if we were holding left mouse button and firing was not true we are shooting :
 ```python
     def Update(self, DeltaTime, Use_delta_Time):
         super().Update(DeltaTime, Use_delta_Time)
         if self.LeftMB and not self.firing :
             self.firing = True
+```
+Now we need to use fire rate to make firing false again so we can shoot again, the formula for fire rate is this :
+<div align="center">
+  <picture>
+    <source srcset="https://latex.codecogs.com/svg.image?\large&space;{\color{black}T_{shot}=\frac{60}{RPM}}" media="(prefers-color-scheme: light)">
+    <img src="https://latex.codecogs.com/svg.image?\large&space;{\color{white}T_{shot}=\frac{60}{RPM}}">
+  </picture>
+  
+</div>
+`RPM` stands for Round per minute which indicates how many bullet we spend each min :
+now lets say our RPM is 800, which in this case we gonna say something like this :
+
+```python
+self.time = 0 #-> make a variable call time in init of gun class
+```
+
+then in update function do this :
+```python
+    def Update(self, DeltaTime, Use_delta_Time):
+        super().Update(DeltaTime, Use_delta_Time)
+        if self.LeftMB and not self.firing : #-> saying if we pressed left mouse button and firing was not true
+            self.firing = True #-> we make firing true
+            self.time = 60 / 800 #->we use our formula to get the fire rate
+            self.shape = "︻╦デ╤━╾o" #-> change the shape of the gun
+
+        if self.firing : #-> saying if were shooting
+            
+
+            if self.time > 0 : #->if time was greater than 0 then we subtract our time with deltaTime until it is 0
+                self.time -= deltaTime_60
+            else : #-> if it was 0 we make firing false again
+                self.firing = False
+        else :
+            self.shape = "︻╦デ╤━╾"
 ```
 
