@@ -110,3 +110,24 @@ first download libary using this command
 ```
 pip install pynput
 ```
+then we want to recieve mouse input so we use mouse lib inside of pynput :
+```python
+from pynput import mouse
+```
+after than we make a listener in our gun class init function :
+```python
+    def __init__(self, x, shape):
+        super().__init__(x, shape)  
+        self.listener = mouse.Listener(on_click=self.Input)#->make listener, and tell which function to call when left mouse button was pressed
+        self.listener.start()#->start the listener
+
+```
+you can see we have function called `self.input` we need to make this function like this :
+```python
+    def Input(self,x, y,button,pressed) :
+        if button == mouse.Button.left: #->if the button we pressed was left mouse button
+            if pressed: #-> if we pressed the button then do something
+                """"""
+            else:#->if we released it then do something else
+                """"""
+```
