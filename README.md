@@ -10,7 +10,7 @@ firing has some few parameters that we need to take care of:
 <br>
 `Firing flag` : this is a variable that we use to indicate we are firing and we won't allow player to player if this state was true
 <br>
-`Firing rate` : we use this to indicate the rate of fire. in other word, this would determine how long it will take for player to shoot again
+`Fire rate` : we use this to indicate the rate of fire. in other word, this would determine how long it will take for player to shoot again
 <br>
 Now that we know what we need we can actually make our firing system.
 ## Step 1: Setup 
@@ -134,3 +134,35 @@ you can see we have function called `self.input` we need to make this function l
 
 
 Now we have everything ready to make our firing system
+
+## Step 2 : Firing
+in this step we will see how we can make our gun fire.
+as mention before we have few parameters to take of `Firing flag` and `Fire rate`
+first we make a varible call firing and one for making sure are holding left mouse button in our gun class like this :
+```python
+    def __init__(self, x, shape):
+        super().__init__(x, shape)
+        self.firing = False #->our firing flag
+        self.LeftMB = False #->our left mouse button
+        self.listener = mouse.Listener(on_click=self.Input)
+        self.listener.start()
+```
+
+then in our input function if we pressed left mouse button then we make LeftMB true:
+```python
+    def Input(self,x, y,button,pressed) :
+        if button == mouse.Button.left:
+            if pressed:
+                self.LeftMB = True
+            else:
+               self.LeftMB = False
+```
+
+Now in our update function we will say if were holding left mouse button and firing was not true we are shooting :
+```python
+    def Update(self, DeltaTime, Use_delta_Time):
+        super().Update(DeltaTime, Use_delta_Time)
+        if self.LeftMB and not self.firing :
+            self.firing = True
+```
+
