@@ -70,7 +70,20 @@ if current_time - previous_frame_60 >= FRAME_TIME_60:
         deltaTime_60 = current_time - previous_frame_60
         previous_frame_60 = current_time
         for instance_class in Main_class.Instances:#->go through all the instances and update them each frame
-            instance_class.Update()
+            instance_class.Update(deltaTime_60,True)
 ```
+
+### Make a gun class :
+to make a gun classs, we want to make sure it is an instance of a main class like this :
+```python
+class Gun(Main_class):
+    def __init__(self, x, shape):
+        super().__init__(x, shape)  
+
+    def Update(self, DeltaTime, Use_delta_Time):
+        super().Update(DeltaTime, Use_delta_Time)  
+```
+
+Now we can create our gun class, before our while loop like this :
 
 
