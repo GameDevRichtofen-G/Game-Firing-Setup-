@@ -13,7 +13,7 @@ firing has some few parameters that we need to take care of:
 `Firing rate` : we use this to indicate the rate of fire. in other word, this would determine how long it will take for player to shoot again
 <br>
 Now that we know what we need we can actually make our firing system.
-## Step 1: Setup : 
+## Step 1: Setup 
 
 first include these codes so that we have a simple engine that we can work with in a python : 
 
@@ -56,14 +56,14 @@ class Main_class():#->class itself
      """#->updates each frame"""
 ```
 Now lets call update function and begin function for all instance :
-### Begin function :
+### Begin function 
 add this before the while loop, this will loop through all main class instances and call on begin play function
 ```python
 for instance_class in Main_class.Instances:
    instance_class.OnBeginPlay()
 ```
 
-### Update function :
+### Update function 
 call this inside of while loop, right after we calculate the deltaTime 
 ```python
 if current_time - previous_frame_60 >= FRAME_TIME_60:
@@ -73,7 +73,7 @@ if current_time - previous_frame_60 >= FRAME_TIME_60:
             instance_class.Update(deltaTime_60,True)
 ```
 
-### Rendering :
+### Rendering 
 to render our stuff we will use this code right after making the scene :
 ```python
     Scene = [' '] * 100
@@ -84,7 +84,7 @@ to render our stuff we will use this code right after making the scene :
     print("".join(Scene))
 ```
 Now we have a basic entity system that we can work with.
-### Make a gun class :
+### Make a gun class 
 to make a gun classs, we want to make sure it is an instance of a main class like this :
 ```python
 class Gun(Main_class):
@@ -102,3 +102,11 @@ Test_gun = Gun(0,"︻╦デ╤━╾")
 for sake of this I will use this text as a gun model "︻╦デ╤━╾".
 after this you should have something like this : 
 ![Description](https://github.com/GameDevRichtofen-G/Game-Firing-Setup-/blob/main/Example_gun_1.gif)
+
+
+### Input function
+to shoot we need an input function, I want to use pynput libary to have some input system in my game.
+first download libary using this command
+```
+pip install pynput
+```
