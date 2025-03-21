@@ -43,17 +43,34 @@ We use to  have a simple scene and deltaTime. made this code in our previous rep
 Here I want to make an entity system so lets make a main class as parent and later on make other instances :
 
 ```python
-class Main_class():
-    Instances = []
-    def __init__(self, x, shape):
-        self.x = x
-        self.shape = shape
-        Main_class.Instances.append(self)
+class Main_class():#->class itself
+    Instances = [] #->We use this to store instances
+    def __init__(self, x, shape): #->our init function
+        self.x = x #->setting up init position on x axis
+        self.shape = shape #->setting up init shape
+        Main_class.Instances.append(self) #->append instance class in main class
 
-    def OnBeginPlay(self):
-      """#On the start of the game"""
+    def OnBeginPlay(self): 
+      """#->On the start of the game"""
     def Update(self, DeltaTime, Use_delta_Time):
-     """#updates each frame"""
+     """#->updates each frame"""
+```
+Now lets call update function and begin function for all instance :
+### Begin function :
+add this before the while loop, this will loop through all main class instances and call on begin play function
+```python
+for instance_class in Main_class.Instances:
+   instance_class.OnBeginPlay()
+```
+
+### Update function :
+call this inside of while loop, right after we calculate the deltaTime 
+```python
+if current_time - previous_frame_60 >= FRAME_TIME_60:
+        deltaTime_60 = current_time - previous_frame_60
+        previous_frame_60 = current_time
+        for instance_class in Main_class.Instances:#->go through all the instances and update them each frame
+            instance_class.Update()
 ```
 
 
