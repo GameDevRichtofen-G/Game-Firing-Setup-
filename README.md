@@ -231,7 +231,37 @@ Final code is on the repo
 ## Other things to know
 In terms of shooting, it is a best to make sure your animation has a same speed as your fire rate.
 sometimes, it is essential to do this because for the guns like pistol, if the player press mouse
-button so fast, it is good to increase the speed of animation. A example of this is my game radar
+button so fast, it is good to increase the speed of animation. A example of this is in my game radar
 where if player shoot so fast the animation speed increases 
+![Description](https://github.com/GameDevRichtofen-G/Game-Firing-Setup-/blob/main/Example_3_gun.gif)
 
+so we can say by now we need to know how fast we were shooting since the last shot took place. which is so simple
+the code below is example of how we can do it :
+```cpp
+void APlayerCharacter::Shoot()
+{
+  /*NOTE : make sure to have a variables called last time and current fire rate in your header class*/
+  if(!Firing) /->return if we weren't firing 
+    return;
+  float CurrentTime = GetWorld()->GetTimeSeconds(); /#->get current time second
+  float DeltaShot = CurrentTime - LastTime; /#->getting the deltaTshot or in other word the time that has passed since the last shot 
+  if (DeltaShot > 0) /#-> getting the current fire rate(fire rate is actually the amount time the player press left mouse button) and we use condition so that we make sure we won't divide by zero
+    CurrentFirerate = 1/DeltaShot;
+  /#-> set our current time as last time 
+  LastTime = CurrentTime;
+  /*Here we calculate the speed of our firing, by divindg it with the maximum number of fire per sec, in my case it was 6.
+   the reason I multipy with 4 is that I want my maximum speed be 4, so that if player was pressing mouse 6 times per
+   sec, our shoot speed would be four, anything above get clamped and anything blow 2 will get clamped as well
+   */
+
+  ShootSpeed = FMath::Clamp((CurrentFirerate/6)*4, 2, 4);  
+}
+```
+Click Speed (Shots/sec)   |  Animation Speed Calculation  | Final Speed (Clamped)
+:-------------------------:|:-------------------------:|:-------------------------:
+0 clicks/sec | (0 / 6) * 4 = 0.0 | 2.0 (clamped)
+2 clicks/sec | (2 / 6) * 4 = 1.2 | 2.0 (clamped)
+5 clicks/sec | (5 / 6) * 4 = 3.2 | 3.2 
+6 clicks/sec | (6 / 6) * 4 = 4.0 | 4.0
+7 clicks/sec | (7 / 6) * 4 = 4.4 | 4.0 (clamped)
 
