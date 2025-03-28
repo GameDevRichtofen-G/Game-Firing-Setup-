@@ -39,8 +39,8 @@ while True:
     print("".join(Scene)) #->Reneder our scene
     time.sleep(0.005)
 ```
-We use to  have a simple scene and deltaTime. made this code in our previous repo with full explanation.
-Here I want to make an entity system so lets make a main class as parent and later on make other instances :
+We use this to  have a simple scene and deltaTime. made this code in our previous repo with full explanation.
+Here I want to make an entity system. So lets make a main class as parent and later on make other instances :
 
 ```python
 class Main_class():#->class itself
@@ -85,7 +85,7 @@ to render our stuff we will use this code right after making the scene :
 ```
 Now we have a basic entity system that we can work with.
 ### Make a gun class 
-to make a gun classs, we want to make sure it is an instance of a main class like this :
+to make a gun class, we want to make sure it is an instance of a main class like this :
 ```python
 class Gun(Main_class):
     def __init__(self, x, shape):
@@ -110,11 +110,11 @@ first download libary using this command
 ```
 pip install pynput
 ```
-then we want to recieve mouse input so we use mouse lib inside of pynput :
+then we want to recieve mouse input. So we use mouse lib inside of pynput :
 ```python
 from pynput import mouse
 ```
-after than we make a listener in our gun class init function :
+after that we make a listener in our gun class init function :
 ```python
     def __init__(self, x, shape):
         super().__init__(x, shape)  
@@ -138,7 +138,7 @@ Now we have everything ready to make our firing system
 ## Step 2 : Firing
 in this step we will see how we can make our gun fire.
 as mention before we have few parameters to take of `Firing flag` and `Fire rate`
-first we make a varible call firing and one for making sure are holding left mouse button in our gun class like this :
+first we make a varible call firing and another one called LeftMB for making sure we are holding the left mouse button in our gun class like this :
 ```python
     def __init__(self, x, shape):
         super().__init__(x, shape)
@@ -148,7 +148,7 @@ first we make a varible call firing and one for making sure are holding left mou
         self.listener.start()
 ```
 
-then in our input function if we pressed left mouse button then we make LeftMB true:
+then in our input function if we pressed left mouse butto, we gonna make LeftMB  true:
 ```python
     def Input(self,x, y,button,pressed) :
         if button == mouse.Button.left:
@@ -264,4 +264,6 @@ Click Speed (Shots/sec)   |  Animation Speed Calculation  | Final Speed (Clamped
 5 clicks/sec | (5 / 6) * 4 = 3.2 | 3.2 
 6 clicks/sec | (6 / 6) * 4 = 4.0 | 4.0
 7 clicks/sec | (7 / 6) * 4 = 4.4 | 4.0 (clamped)
+
+
 
