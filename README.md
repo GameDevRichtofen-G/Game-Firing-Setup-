@@ -1,16 +1,14 @@
 # Firing in games
-In many different games we have guns, which we can use to kill enemies or do N task.
-from long time ago, firing in video games was a gameplay experience to give a player
-an option to protect itself. In this repository I am gonna teach you how you can make
-a firing system inside of your game.
+In many different games we have guns, which we can use to kill enemies or do tasks.
+A long time ago, firing in video games was a gameplay experience to give a player an option to protect themselves. In this repository, I am going to teach you how you can make a firing system inside of your game.
 
 # How to make a firing system
 first I am gonna demonstrate this in python so it would be easier to understand.
 firing has some few parameters that we need to take care of:
 <br>
-`Firing flag` : this is a variable that we use to indicate we are firing and we won't allow player to player if this state was true
+`Firing flag` : this is a variable that we use to indicate we are firing and we won't allow player to shoot if this state was true
 <br>
-`Fire rate` : we use this to indicate the rate of fire. in other word, this would determine how long it will take for player to shoot again
+`Fire rate` : we use this to indicate the rate of fire. in other words, this would determine how long it will take for player to shoot again
 <br>
 Now that we know what we need we can actually make our firing system.
 ## Step 1: Setup 
@@ -36,11 +34,11 @@ while True:
        
     os.system("cls" if os.name == "nt" else "clear") 
     Scene = [' '] * 10 #->making our scene
-    print("".join(Scene)) #->Reneder our scene
+    print("".join(Scene)) #->Render our scene
     time.sleep(0.005)
 ```
-We use this to  have a simple scene and deltaTime. made this code in our previous repo with full explanation.
-Here I want to make an entity system. So lets make a main class as parent and later on make other instances :
+We use this to  have a simple scene and deltaTime. made this code in our previous repo with a full explanation.
+Here, I want to make an entity system. So let's make a main class as the parent and later on make other instances. :
 
 ```python
 class Main_class():#->class itself
@@ -55,7 +53,7 @@ class Main_class():#->class itself
     def Update(self, DeltaTime, Use_delta_Time):
      """#->updates each frame"""
 ```
-Now lets call update function and begin function for all instance :
+Now lets call update function and begin function for all instances :
 ### Begin function 
 add this before the while loop, this will loop through all main class instances and call on begin play function
 ```python
@@ -69,7 +67,7 @@ call this inside of while loop, right after we calculate the deltaTime
 if current_time - previous_frame_60 >= FRAME_TIME_60:
         deltaTime_60 = current_time - previous_frame_60
         previous_frame_60 = current_time
-        for instance_class in Main_class.Instances:#->go through all the instances and update them each frame
+        for instance_class in Main_class.Instances:#->go through all the instances and update them on each frame
             instance_class.Update(deltaTime_60,True)
 ```
 
@@ -99,18 +97,18 @@ Now we can create our gun class, before our while loop like this :
 ```python
 Test_gun = Gun(0,"︻╦デ╤━╾")
 ```
-for sake of this I will use this text as a gun model "︻╦デ╤━╾".
+for the sake of this I will use this text as a gun model "︻╦デ╤━╾".
 after this you should have something like this : 
 ![Description](https://github.com/GameDevRichtofen-G/Game-Firing-Setup-/blob/main/Example_gun_1.gif)
 
 
 ### Input function
-to shoot we need an input function, I want to use pynput libary to have some input system in my game.
-first download libary using this command
+to shoot we need an input function, I want to use pynput library to have some input system in my game.
+first download library using this command
 ```
 pip install pynput
 ```
-then we want to recieve mouse input. So we use mouse lib inside of pynput :
+then we want to receive mouse input. So we use mouse lib inside of pynput :
 ```python
 from pynput import mouse
 ```
@@ -148,7 +146,7 @@ first we make a varible call firing and another one called LeftMB for making sur
         self.listener.start()
 ```
 
-then in our input function if we pressed left mouse butto, we gonna make LeftMB  true:
+then in our input function if we pressed left mouse butto, we are going to make LeftMB  true:
 ```python
     def Input(self,x, y,button,pressed) :
         if button == mouse.Button.left:
@@ -158,7 +156,7 @@ then in our input function if we pressed left mouse butto, we gonna make LeftMB 
                self.LeftMB = False
 ```
 
-Now in our update function we will say if we were holding left mouse button and firing was not true we are shooting :
+Now in our update function we will say if we are holding left mouse button and firing was not true we are shooting :
 ```python
     def Update(self, DeltaTime, Use_delta_Time):
         super().Update(DeltaTime, Use_delta_Time)
